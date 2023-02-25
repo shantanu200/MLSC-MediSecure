@@ -1,13 +1,11 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { AiFillDatabase, AiFillFileAdd } from "react-icons/ai";
-import { useLocation } from "react-router-dom";
-import { data, testData } from "../../api/data";
-import userAvatar from "../../Test/images/useravatar.jpg";
-import MedicalForm from "../MedicalRecords/MedicalForm";
-import MedicalRecords from "../MedicalRecords/MedicalRecords";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { AiFillDatabase } from 'react-icons/ai';
+import { useLocation } from 'react-router-dom';
+import MedicalForm from '../MedicalRecords/MedicalForm';
+import MedicalRecords from '../MedicalRecords/MedicalRecords';
 
-const UserProfile = () => {
+const PersonalMedical = () => {
   const location = useLocation();
 
   const [user, setUser] = useState();
@@ -99,30 +97,16 @@ const UserProfile = () => {
       </section>
       <div className="mx-8 flex w-full">
         <button
-          onClick={() => {
-            setIsForm(!isForm);
-            setIsRecord(false);
-          }}
-          className="border rounded-lg py-3 px-2 bg-indigo-600 text-white flex justify-center items-center w-1/3 mr-6"
-        >
-          <AiFillFileAdd className="mr-2" />
-          Add Medical Records
-        </button>
-        <button
           className="py-3 px-2 rounded-lg border bg-emerald-800 text-white flex justify-center items-center w-1/3"
-          onClick={() => {
-            setIsRecord(!isRecord);
-            setIsForm(false);
-          }}
+          onClick={() => setIsRecord(!isRecord)}
         >
           <AiFillDatabase className="mr-2" />
           Previous Medical Records
         </button>
       </div>
-      {isForm  ? <MedicalForm /> : null}
       {isRecord  ? <MedicalRecords /> : null}
     </div>
   );
-};
+}
 
-export default UserProfile;
+export default PersonalMedical
